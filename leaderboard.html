@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leaderboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="leaderboard">
+    <h1>Leaderboard</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Donations</th>
+            </tr>
+        </thead>
+        <tbody id="leaderboard-body"></tbody>
+    </table>
+    <a href="dashboard.html">Back to Dashboard</a>
+</div>
+
+<script>
+fetch("data.json")
+    .then(res => res.json())
+    .then(data => {
+        const tbody = document.getElementById("leaderboard-body");
+        data.leaderboard.forEach(player => {
+            const row = `<tr>
+                <td>${player.name}</td>
+                <td>₹${player.donations}</td>
+            </tr>`;
+            tbody.innerHTML += row;
+        });
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Donation Dashboard</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="dashboard">
+    <h1>Welcome, <span id="name"></span></h1>
+    <p>Referral Code: <b id="referral"></b></p>
+    <p>Total Donations Raised: ₹<b id="donations"></b></p>
+    
+    <h2>Rewards / Unlockables</h2>
+    <ul>
+        <li>🎁 Free T-shirt</li>
+        <li>🎫 Event Pass</li>
+        <li>🏆 Recognition Badge</li>
+    </ul>
+
+    <a href="leaderboard.html">View Leaderboard</a>
+</div>
+
+<script>
+fetch("data.json")
+    .then(res => res.json())
+    .then(data => {
+        document.getElementById("name").innerText = data.name;
+        document.getElementById("referral").innerText = data.referralCode;
+        document.getElementById("donations").innerText = data.donations;
+    });
+</script>
+</body>
+</html>
